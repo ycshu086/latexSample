@@ -1,0 +1,186 @@
+% ------------------------------------------------------------
+% ACM sig-alternate submission configurations created by yuanchao shu @ 2015
+% ------------------------------------------------------------
+
+\PassOptionsToPackage{pdfpagelabels=false}{hyperref}
+
+% it is usually the manuscript submission template
+\documentclass{sig-alternate-10pt}
+
+% it is usually the camera-ready submission template
+% \documentclass{sig-alternate}
+
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{times}
+\usepackage{amsfonts}
+\usepackage{color}
+\usepackage{soul}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\graphicspath{{./fig/}}
+\DeclareGraphicsExtensions{.eps, .pdf, .mps, .png, .jpg}
+\usepackage{epstopdf}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{comment}
+\usepackage{enumerate}
+\usepackage{algorithmic}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\usepackage[norelsize,linesnumbered,commentsnumbered]{algorithm2e}
+\SetAlgoSkip{}
+\renewcommand{\algorithmcfname}{ALGORITHM}
+\usepackage[hyphens]{url}
+\usepackage[english]{babel}
+\usepackage[svgnames]{xcolor}
+\usepackage{balance}
+\usepackage{array}
+\usepackage{verbatim}
+
+\newcommand{\name}[0]{{\sc Name}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+% ---------- for highlighted autoreference ----------
+\usepackage[% dvipdfm, % this is for Latex+dvi2pdf, comment it if using PdfLatex or Xelatex
+            colorlinks,
+            linkcolor = magenta,
+            anchorcolor = blue,
+            citecolor = violet,
+            urlcolor = black,
+            breaklinks = true
+            ]{hyperref}
+\usepackage{bookmark}
+% capitalize Section
+\addto\extrasenglish{%
+  \renewcommand{\sectionautorefname}{Section}%
+  \renewcommand{\algorithmautorefname}{Algorithm}%
+  \renewcommand{\subsectionautorefname}{Section}%
+  \renewcommand{\subsubsectionautorefname}{Section%%
+  }%
+  \renewcommand{\figureautorefname}{Figure}%
+}
+% link subfigure
+\usepackage{subfigure}
+\renewcommand\thesubfigure{(\alph{subfigure})}
+\newcommand{\subfigureautorefname}{\figureautorefname}
+% rename the counter of lemma
+\usepackage{aliascnt}
+\newaliascnt{lemma}{theorem}
+\let\lemma\relax
+\newtheorem{lemma}[lemma]{Lemma}
+\aliascntresetthe{lemma}
+\providecommand*{\lemmaautorefname}{Lemma}
+\newaliascnt{corollary}{theorem}
+\let\corollary\relax
+\newtheorem{corollary}[corollary]{Corollary}
+\aliascntresetthe{corollary}
+\providecommand*{\corollaryautorefname}{Corollary}
+% ---------- for highlighted autoreference ----------
+
+% ---------- margin adjustment ----------
+\setlength{\paperheight}{11in}
+\setlength{\paperwidth}{8.5in}
+%\setlength{\topmargin}{-0.5in}%
+%\setlength{\textheight}{9.25in}%
+%\setlength{\textwidth}{6.99in}%
+%\setlength{\columnsep}{0.15in}%
+%\setlength{\oddsidemargin}{-0.4in}
+%\setlength{\evensidemargin}{-0.4in}
+% ---------- margin adjustment ----------
+
+
+% ---------- debug switch ----------
+\newif\ifdebugdoc\debugdocfalse
+\ifdebugdoc
+
+%reminders
+\newcommand{\todo}[1]{\textbf{\textcolor{red}{[TODO: #1]}}}
+\newcommand{\remind}[1]{\textit{ \textcolor{red}{[Remind: #1]}}}
+\newcommand{\note}[1]{\vskip 2ex \noindent\colorbox{yellow}{\parbox{\columnwidth}{#1}}\vskip 2ex}
+\newcommand{\q}[1]{\vskip 2ex \noindent\colorbox{cyan}{\parbox{\columnwidth}{\textbf{Question:} #1}}\vskip 2ex}
+\newcommand{\idea}[1]{\vskip 2ex \noindent\colorbox{magenta}{\parbox{\columnwidth}{\textbf{Idea:} #1}}\vskip 2ex}
+\newcommand{\yuanchao}[1]{\footnote{\colorbox{blue}{Yuanchao:} #1.}}
+\newcommand{\fwho}[2]{\footnote{\colorbox{red}{#2:} #1.}}
+
+%highlights
+\newcommand{\new}[1]{\textcolor{blue}{#1}}
+\newcommand{\highlight}[1]{\textcolor{red}{#1}}
+\newcommand{\edit}[1]{\textcolor{ForestGreen}{#1}}
+
+%editing
+\newcommand{\repl}[2]{\textcolor{red}{#1}\textcolor{blue}{\sout{#2}}}
+\newcommand{\add}[1]{\textcolor{red}{#1}}
+\newcommand{\del}[1]{\textcolor{blue}{\sout{#1}}}
+
+\else
+%reminders
+\newcommand{\todo}[1]{}
+\newcommand{\remind}[1]{}
+\newcommand{\note}[1]{}
+\newcommand{\q}[1]{}
+\newcommand{\idea}[1]{}
+\newcommand{\yuanchao}[1]{}
+\newcommand{\fwho}[2]{}
+
+%highlights
+\newcommand{\new}[1]{\textcolor{black}{#1}}
+\newcommand{\highlight}[1]{\textcolor{black}{#1}}
+\newcommand{\edit}[1]{\textcolor{black}{#1}}
+
+%editing
+\newcommand{\repl}[2]{#1}
+\newcommand{\add}[1]{#1}
+\newcommand{\del}[1]{}
+
+\fi
+% ---------- debug switch ----------
+
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newcommand{\order}[1]{\ensuremath{\mathcal{O}(#1)}}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\renewcommand{\paragraph}[1]{\vspace{4pt}\noindent\textbf{#1: }}
+
+\newcommand{\squishlist}{
+   \begin{list}{$\bullet$}
+    { \setlength{\itemsep}{0pt}    \setlength{\parsep}{3pt}
+      \setlength{\topsep}{0pt}     \setlength{\partopsep}{3pt}
+      \setlength{\leftmargin}{1em} \setlength{\labelwidth}{1em}
+      \setlength{\labelsep}{0.5em} } }
+
+\newcommand{\squishlistdiamond}{
+   \begin{list}{$\diamond$}
+    { \setlength{\itemsep}{0pt}    \setlength{\parsep}{3pt}
+      \setlength{\topsep}{0pt}     \setlength{\partopsep}{3pt}
+      \setlength{\leftmargin}{1em} \setlength{\labelwidth}{1em}
+      \setlength{\labelsep}{0.5em} } }
+
+\newcommand{\squishend}{
+    \end{list}  }
+
+\newfont{\mycrnotice}{ptmr8t at 7pt}
+\newfont{\myconfname}{ptmri8t at 7pt}
+\let\crnotice\mycrnotice%
+\let\confname\myconfname%
+
+\permission{Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for components of this work owned by others than ACM must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee. Request permissions from Permissions@acm.org.}
+\conferenceinfo{Conference name,}{Conference info.}
+\copyrightetc{\copyright~2010 ACM. ISBN \the\acmcopyr}
+\crdata{\ ...\$15.00.\\
+DOI: http://dx.doi.org/}
+% Update the red X's to your assigned DOI from ACM
+
+\clubpenalty=10000
+\widowpenalty = 10000
+\hyphenpenalty=5000
+\tolerance=2000
+\hyphenation{op-tical net-works semi-conduc-tor}
+\def\UrlBreaks{\do\/\do-}
